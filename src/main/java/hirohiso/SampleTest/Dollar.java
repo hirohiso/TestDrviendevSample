@@ -12,7 +12,7 @@ public class Dollar extends Money{
      * @param multipl
      * @return
      */
-    public Dollar times(int multipl) {
+    public Money times(int multipl) {
         return new Dollar(this.amount*multipl);
     }
 

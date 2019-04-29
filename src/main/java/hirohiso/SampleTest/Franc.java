@@ -11,7 +11,7 @@ public class Franc extends Money{
      * @param multipl
      * @return
      */
-    public Franc times(int multipl) {
+    public Money times(int multipl) {
         return new Franc(this.amount*multipl);
     }
 
