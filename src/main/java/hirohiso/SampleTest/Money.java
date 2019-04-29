@@ -1,9 +1,12 @@
 package hirohiso.SampleTest;
 
-abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
-    abstract Money times(int multiple);
+
+    public Money times(int multiple){
+        return new Money(this.amount*multiple,this.currency);
+    };
 
     public Money(int amount,String currency){
         this.amount = amount;
@@ -11,7 +14,7 @@ abstract class Money {
     }
     public boolean equals(Object o){
         Money m = (Money)o;
-        return (m.amount == this.amount) && (this.getClass() == m.getClass());
+        return (m.amount == this.amount) && (this.currency() == m.currency());
     }
 
 
@@ -25,4 +28,8 @@ abstract class Money {
     public String currency(){
         return this.currency;
     };
+
+    public String toString(){
+        return this.amount + ":" + this.currency;
+    }
 }

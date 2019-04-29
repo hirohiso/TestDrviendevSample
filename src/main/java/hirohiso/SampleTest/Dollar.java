@@ -7,13 +7,6 @@ public class Dollar extends Money{
         super(amount, currency);
     }
 
-    /***
-     *
-     * @param multipl
-     * @return
-     */
-    public Money times(int multipl) {
-        return Money.dollar(this.amount*multipl);
-    }
+
 
 }
