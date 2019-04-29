@@ -3,8 +3,8 @@ package hirohiso.SampleTest;
 public class Dollar extends Money{
 
 
-    public Dollar(int amount) {
-        this.amount = amount;
+    public Dollar(int amount,String currency) {
+        super(amount, currency);
     }
 
     /***
@@ -13,9 +13,7 @@ public class Dollar extends Money{
      * @return
      */
     public Money times(int multipl) {
-        return new Dollar(this.amount*multipl);
+        return Money.dollar(this.amount*multipl);
     }
-
-
 
 }
