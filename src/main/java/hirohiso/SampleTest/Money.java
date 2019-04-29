@@ -18,11 +18,11 @@ public class Money {
     }
 
 
-    static Dollar dollar(int m){
-        return new Dollar(m,"USD");
+    static Money dollar(int m){
+        return new Money(m,"USD");
     }
-    static Franc franc(int m){
-        return new Franc(m,"CHF");
+    static Money franc(int m){
+        return new Money(m,"CHF");
     }
 
     public String currency(){
