@@ -5,11 +5,12 @@ public class Dollar {
 	public int amount;
 
 	public Dollar(int amount) {
-		// TODO 自動生成されたコンストラクター・スタブ
+		this.amount = amount;
 	}
 
-	public void times(int i) {
+	public void times(int multipl) {
 		// TODO 自動生成されたメソッド・スタブ
+		this.amount = this.amount*multipl;
 
 	}
 
