@@ -98,4 +98,32 @@ public class MoneyTest {
         assertEquals(Money.dollar(10),result);
     }
 
+    @Test
+    public void testSumPlusMoney(){
+        Expression fiveBacks  = Money.dollar(5);
+        Expression tenFrancs  = Money.franc(10);
+        Bank bank = new Bank();
+        //通貨レートを登録
+        bank.addRate("CHF","USD",2);
+
+        //お金（ドル）とお金（フラン）の合計とお金(ドル)の合計
+        Expression sum = new Sum(fiveBacks, tenFrancs).plus(fiveBacks);
+        //合計をドル換算で
+        Money result = bank.reduce(sum,"USD");
+        assertEquals(Money.dollar(15),result);
+    }
+    @Test
+    public void testSumTimes(){
+        Expression fiveBacks  = Money.dollar(5);
+        Expression tenFrancs  = Money.franc(10);
+        Bank bank = new Bank();
+        //通貨レートを登録
+        bank.addRate("CHF","USD",2);
+
+        //お金（ドル）とお金（フラン）の合計の2倍
+        Expression sum = new Sum(fiveBacks, tenFrancs).times(2);
+        //合計をドル換算で
+        Money result = bank.reduce(sum,"USD");
+        assertEquals(Money.dollar(20),result);
+    }
 }

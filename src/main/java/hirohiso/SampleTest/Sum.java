@@ -16,9 +16,12 @@ public class Sum implements Expression{
     }
 
     @Override
-    public Expression plus(Expression tenFrancs) {
-        // TODO 自動生成されたメソッド・スタブ
-        return null;
+    public Expression plus(Expression added) {
+        return new Sum(this, added);
+    }
+
+    public Expression times(int multipl) {
+        return new Sum(this.addend.times(multipl), this.augend.times(multipl));
     }
 
 }
