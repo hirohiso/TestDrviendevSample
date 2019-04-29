@@ -31,11 +31,41 @@ public class MoneyTest {
     @Test
     public void testSimpleAddition(){
         Money five  = Money.dollar(5);
+        //お金（ドル）とお金（ドル）の合計
         Expression sum = five.plus(five);
         Bank bank = new Bank();
+        //合計をドル換算で
         Money reduce = bank.reduce(sum,"USD");
         assertEquals(Money.dollar(10),reduce);
+    }
 
+    @Test
+    public void testPlusReturnSum(){
+        Money five = Money.dollar(5);
+
+        Expression result = five.plus(five);
+        Sum sum = (Sum)result;
+        assertEquals(five, sum.augend);
+        assertEquals(five, sum.addend);
+    }
+
+    @Test
+    public void testReduceSum(){
+        //3ドルと4ドルの合計をドル換算で受け取るテスト
+        Expression sum = new Sum(Money.dollar(3),Money.dollar(4));
+        Bank bank = new Bank();
+        Money reduce = bank.reduce(sum,"USD");
+        //reduceメソッドでsumからお金を取り出して合計した新しいMoneyを返す
+        assertEquals(Money.dollar(7),reduce);
+    }
+
+    @Test
+    public void testReduceMoney(){
+        Bank bank = new Bank();
+        //reduceメソッドはExpressionを引数にとるので、
+        //Moneyもテスト対象に加える
+        Money reduce = bank.reduce(Money.dollar(1),"USD");
+        assertEquals(Money.dollar(1),reduce);
     }
 
 
