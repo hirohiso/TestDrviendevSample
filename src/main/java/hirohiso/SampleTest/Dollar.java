@@ -1,8 +1,7 @@
 package hirohiso.SampleTest;
 
-public class Dollar {
+public class Dollar extends Money{
 
-    private int amount;
 
     public Dollar(int amount) {
         this.amount = amount;
@@ -17,9 +16,6 @@ public class Dollar {
         return new Dollar(this.amount*multipl);
     }
 
-    public boolean equals(Object o){
-        Dollar d = (Dollar)o;
-        return d.amount == this.amount;
-    }
+
 
 }
