@@ -68,5 +68,20 @@ public class MoneyTest {
         assertEquals(Money.dollar(1),reduce);
     }
 
+    @Test
+    public void testReduceMoneyDifferentCurrency(){
+        Bank bank = new Bank();
+        //通貨レートを登録
+        bank.addRate("CHF","USD",2);
+
+        Money reduce = bank.reduce(Money.franc(2),"USD");
+        assertEquals(Money.dollar(1),reduce);
+    }
+    @Test
+    public void testIdentityRate(){
+        Bank bank = new Bank();
+
+        assertEquals(1,bank.rate("USD", "USD"));
+    }
 
 }
