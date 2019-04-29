@@ -4,9 +4,6 @@ public class Money implements Expression{
     protected int amount;
     protected String currency;
 
-    public Money times(int multiple){
-        return new Money(this.amount*multiple,this.currency);
-    };
 
     public Money(int amount,String currency){
         this.amount = amount;
@@ -33,10 +30,14 @@ public class Money implements Expression{
         return this.amount + ":" + this.currency;
     }
 
-    public Expression plus(Money added) {
+    public Expression plus(Expression added) {
 
         return new Sum(this,added);
     }
+
+    public Expression times(int multiple){
+        return new Money(this.amount*multiple,this.currency);
+    };
 
     public Money reduce(Bank bank,String to) {
         int rate = bank.rate(this.currency, to);

@@ -84,4 +84,18 @@ public class MoneyTest {
         assertEquals(1,bank.rate("USD", "USD"));
     }
 
+    @Test
+    public void testMixedAddition(){
+        Expression fiveBacks  = Money.dollar(5);
+        Expression tenFrancs  = Money.franc(10);
+        //お金（ドル）とお金（ドル）の合計
+
+        Bank bank = new Bank();
+        //通貨レートを登録
+        bank.addRate("CHF","USD",2);
+        //合計をドル換算で
+        Money result = bank.reduce(fiveBacks.plus(tenFrancs),"USD");
+        assertEquals(Money.dollar(10),result);
+    }
+
 }

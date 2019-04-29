@@ -1,18 +1,24 @@
 package hirohiso.SampleTest;
 
 public class Sum implements Expression{
-    Money augend;
-    Money addend;
+    Expression augend;
+    Expression addend;
 
-    public Sum(Money add,Money aug){
+    public Sum(Expression add,Expression aug){
         this.addend = add;
         this.augend = aug;
 
     }
 
     public Money reduce(Bank bank,String to){
-        int amount = this.addend.amount + this.augend.amount;
+        int amount = this.addend.reduce(bank, to).amount + this.augend.reduce(bank, to).amount;
         return new Money(amount, to);
+    }
+
+    @Override
+    public Expression plus(Expression tenFrancs) {
+        // TODO 自動生成されたメソッド・スタブ
+        return null;
     }
 
 }
