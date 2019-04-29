@@ -17,4 +17,9 @@ public class Dollar {
         return new Dollar(this.amount*multipl);
     }
 
+    public boolean equals(Object o){
+        Dollar d = (Dollar)o;
+        return d.amount == this.amount;
+    }
+
 }
